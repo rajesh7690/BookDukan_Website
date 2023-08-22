@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    tools{
+        maven 'local_maven'
+    }
+    parameters{
+        string(name:'tomcat_staging',defaultValue:'13.53.40.182', description:'Remote Staging Server' )
+    }
+
+    Stages{
+        stage('Build'){
+            steps{
+                sh 'mvn clean package'
+            }
+            post{
+                success{
+                    echo 'Archieving the artifacts'
+                    archiveArtifacts artifacts: '**/target/*.war'
+                }
+            }
+        }
+        stage('Deployments'){
+            parallel{
+                stage ("Deploy to Staging"){
+                    steps{
+                        sh "scp -v -o StrictHostKeyChecking=no **/*.war root@${params.tomcat_staging} : tomcat/webapps/"
+                    }
+                }
+            }
+        }
+    }
+}
