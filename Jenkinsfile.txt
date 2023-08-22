@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     tools{
-        maven 'local_maven'
+        maven 'maven3'
     }
     parameters{
         string(name:'tomcat_staging',defaultValue:'13.53.40.182', description:'Remote Staging Server' )
     }
 
-    Stages{
+    stages{
         stage('Build'){
             steps{
                 sh 'mvn clean package'
