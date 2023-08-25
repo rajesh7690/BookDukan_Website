@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>BookDukan.com from tomcat</title>
+<title>BookDukan.com</title>
 <%@include file="all_component/all_css.jsp"%>
 <style type="text/css">
 .back-img {
