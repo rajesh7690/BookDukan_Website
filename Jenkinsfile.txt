@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     tools{
         maven 'maven3'
     }
@@ -8,13 +9,13 @@ pipeline {
             steps{
                 sh 'mvn clean package'
             }
-            post{
-                success{
-                    echo 'archieving war file'
-                    archiveArtifacts artifacts: 'target/*.war'
-                    echo 'success full'
-                }
-            }
-        }      
+        }
+        stage('Deployments'){
+        	steps{
+        		sshagent(['tomcat']) {
+   					sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@13.53.40.182:/root/tomcat/webapps'
+				}
+        	}
+        }
     }
 }
