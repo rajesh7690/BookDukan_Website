@@ -145,16 +145,28 @@ public boolean deleteBook(int id) {
 }
 
 @Override
-public List<BookDetails> fourBook(String type) {
+public List<BookDetails> getCatagoryWiseBook(String type,String size) {
 	List<BookDetails> book = new ArrayList<>();
 	try {
 		String query=null;
-		if("recent".equals(type))
-			query="select * from book_details where  status = 'Active' order by bookid  desc limit 4";
-		else if("New".equals(type))
-			query="select * from book_details where bookCatagory='New' and status = 'Active' limit 4 ";
-		else if("Old".equals(type))
-			query="select * from book_details where bookCatagory='Old' and status = 'Active' limit 4 ";
+		if("Recent".equals(type)) {
+			if(size.equals("4"))
+				query="select * from book_details where  status = 'Active' order by bookid  desc limit 4";
+			else
+				query="select * from book_details where  status = 'Active' order by bookid desc";
+		}
+		else if("New".equals(type)) {
+			if(size.equals("4"))
+				query="select * from book_details where bookCatagory='New' and status = 'Active' limit 4 ";
+			else
+				query="select * from book_details where bookCatagory='New' and status = 'Active'";
+		}
+		else if("Old".equals(type)) {
+			if(size.equals("4"))
+				query="select * from book_details where bookCatagory='Old' and status = 'Active' limit 4 ";
+			else
+				query="select * from book_details where bookCatagory='Old' and status = 'Active'";
+		}
 		PreparedStatement ps = con.prepareStatement(query);
 		ResultSet rs = ps.executeQuery();
 		BookDetails b=null;
@@ -172,12 +184,9 @@ public List<BookDetails> fourBook(String type) {
 			
 			book.add(b);
 		}
-		return book;
-		
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
-	return null;
+	return book;
 }
-	
 }

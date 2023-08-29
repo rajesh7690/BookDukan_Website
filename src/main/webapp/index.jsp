@@ -33,12 +33,12 @@
 		<h1 class="text-center text-white">BookDukan.com</h1>
 	</div>
 	<!-- Recent book -->
-	<div class="container">
+	<div class="container-fluid">
 		<h3 class="text-center mt-3">Recent Book</h3>
 		<div class="row">
 			<%
 			Book_Dao_Impl bookDb = new Book_Dao_Impl(DBConnect.getsqlConnection());
-			List<BookDetails> books = bookDb.fourBook("recent");
+			List<BookDetails> books = bookDb.getCatagoryWiseBook("Recent","4");
 
 			for (BookDetails book : books) {
 			%>
@@ -57,7 +57,7 @@
 							<%
 							if ("New".equals(book.getBookCategory())) {
 							%>
-							<a href="" class="btn btn-danger btn-sm ml-2"><i
+							<a href="" class="btn btn-danger btn-sm ml-5"><i
 								class="fa-solid fa-cart-shopping"></i> Add</a> <a href=""
 								class="btn btn-primary btn-sm ml-1">View Details</a> <a href=""
 								class="btn btn-danger btn-sm  ml-1"><i
@@ -84,16 +84,16 @@
 			%>
 		</div>
 		<div class="text-center mt-3 mb-3">
-			<a href="" class="btn btn-primary btn-sm text-white">View All</a>
+			<a href="all_recent_book.jsp" class="btn btn-primary btn-sm text-white">View All</a>
 		</div>
 	</div>
 	<!-- New book -->
-	<div class="container">
+	<div class="container-fluid">
 		<h3 class="text-center">New Book</h3>
 		<div class="row">
 			<%
 			Book_Dao_Impl bookToDb = new Book_Dao_Impl(DBConnect.getsqlConnection());
-			List<BookDetails> newbooks = bookToDb.fourBook("New");
+			List<BookDetails> newbooks = bookToDb.getCatagoryWiseBook("New","4");
 
 			for (BookDetails newbook : newbooks) {
 			%>
@@ -109,7 +109,7 @@
 							Category :
 							<%=newbook.getBookCategory()%></p>
 						<div class="row">
-							<a href="" class="btn btn-danger btn-sm ml-2"><i
+							<a href="" class="btn btn-danger btn-sm ml-5"><i
 								class="fa-solid fa-cart-shopping"></i> Add</a> <a href=""
 								class="btn btn-primary btn-sm ml-1">View Details</a> <a href=""
 								class="btn btn-danger btn-sm  ml-1"><i
@@ -123,16 +123,16 @@
 			%>
 		</div>
 		<div class="text-center mt-3 mb-3">
-			<a href="" class="btn btn-primary btn-sm text-white">View All</a>
+			<a href="all_new_book.jsp" class="btn btn-primary btn-sm text-white">View All</a>
 		</div>
 	</div>
 	<!-- Old book -->
-	<div class="container">
+	<div class="container-fluid">
 		<h3 class="text-center">Old Book</h3>
 		<div class="row">
 			<%
 			Book_Dao_Impl bookDbOld = new Book_Dao_Impl(DBConnect.getsqlConnection());
-			List<BookDetails> oldbooks = bookDbOld.fourBook("Old");
+			List<BookDetails> oldbooks = bookDbOld.getCatagoryWiseBook("Old","4");
 
 			for (BookDetails oldbook : oldbooks) {
 			%>
@@ -160,7 +160,7 @@
 			%>
 		</div>
 		<div class="text-center mt-3 mb-3">
-			<a href="" class="btn btn-primary btn-sm text-white">View All</a>
+			<a href="all_old_book.jsp" class="btn btn-primary btn-sm text-white">View All</a>
 		</div>
 	</div>
 	<%@include file="all_component/footer.jsp"%>
