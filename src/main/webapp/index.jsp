@@ -58,7 +58,7 @@
 							if ("New".equals(book.getBookCategory())) {
 							%>
 							<a href="" class="btn btn-danger btn-sm ml-5"><i
-								class="fa-solid fa-cart-shopping"></i> Add</a> <a href=""
+								class="fa-solid fa-cart-shopping"></i> Add</a> <a href="view_book.jsp?id=<%=book.getBookId()%>"
 								class="btn btn-primary btn-sm ml-1">View Details</a> <a href=""
 								class="btn btn-danger btn-sm  ml-1"><i
 								class="fa-solid fa-indian-rupee-sign"></i> <%=book.getPrice()%></a>
@@ -68,8 +68,8 @@
 							<%
 							if ("Old".equals(book.getBookCategory())) {
 							%>
-							<a href="" class="btn btn-primary btn-sm ml-5">View Details</a> <a
-								href="" class="btn btn-danger btn-sm  ml-1"><i
+							<a href="view_book.jsp?id=<%=book.getBookId()%>" class="btn btn-primary btn-sm ml-5">View Details</a> <a
+								href="view_book.jsp?id=<%=book.getBookId()%>" class="btn btn-danger btn-sm  ml-1"><i
 								class="fa-solid fa-indian-rupee-sign"></i> <%=book.getPrice()%></a>
 							<%
 							}
@@ -110,7 +110,7 @@
 							<%=newbook.getBookCategory()%></p>
 						<div class="row">
 							<a href="" class="btn btn-danger btn-sm ml-5"><i
-								class="fa-solid fa-cart-shopping"></i> Add</a> <a href=""
+								class="fa-solid fa-cart-shopping"></i> Add</a> <a href="view_book.jsp?id=<%=newbook.getBookId()%>"
 								class="btn btn-primary btn-sm ml-1">View Details</a> <a href=""
 								class="btn btn-danger btn-sm  ml-1"><i
 								class="fa-solid fa-indian-rupee-sign"></i> <%=newbook.getPrice()%></a>
@@ -148,7 +148,7 @@
 							Category :
 							<%=oldbook.getBookCategory()%></p>
 						<div class="row">
-							<a href="" class="btn btn-primary btn-sm ml-5">View Details</a> <a
+							<a href="view_book.jsp?id=<%=oldbook.getBookId()%>" class="btn btn-primary btn-sm ml-5">View Details</a> <a
 								href="" class="btn btn-danger btn-sm  ml-1"><i
 								class="fa-solid fa-indian-rupee-sign"></i> <%=oldbook.getPrice()%></a>
 						</div>

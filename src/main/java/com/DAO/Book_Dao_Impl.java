@@ -115,7 +115,10 @@ public BookDetails getBookById(int id) {
 			book.setBookName(rs.getString(2));
 			book.setAuthor(rs.getString(3));
 			book.setPrice(rs.getDouble(4));
+			book.setBookCategory(rs.getString(5));
 			book.setStatus(rs.getString(6));
+			book.setImage(rs.getString(7));
+			book.setEmail(rs.getString(8));
 		}
 		return book;
 	} catch (Exception e) {
